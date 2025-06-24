@@ -11,7 +11,9 @@ Divertitevi a scoprire nuove sensazioni insieme!
 **NB:** Consenso e rispetto sempre al primo posto.
 """)
 
-# Piaceri originali PER LEI (come forniti da te)
+# Timer selezionabile in minuti
+timer = st.slider("⏳ Scegli il timer della sfida (minuti):", min_value=1, max_value=15, value=5)
+
 sfide_per_lei = [
     "Legami piedi e le mani : leccami SOLO DAVANTI PER 5 minuti",
     "⁠legami piedi e mani: leccami solo dietro per 3 minuti e le mani le usi davanti",
@@ -25,7 +27,6 @@ sfide_per_lei = [
     "⁠con un cubetto di ghiaccio in bocca, parti dalla bocca e arrivi ai piedi"
 ]
 
-# Nuove sfide originali PER LEI, ispirate ai suoi piaceri (10)
 sfide_per_lei += [
     "Ti lego le mani sopra la testa e ti massaggio lentamente le cosce fino al bacino per 10 minuti",
     "Con le mani legate, devi ascoltare solo la mia voce mentre ti guido in un gioco sensoriale",
@@ -39,7 +40,6 @@ sfide_per_lei += [
     "Mi fai un massaggio lento e profondo con olio caldo, mentre mi bendi e non posso vedere nulla"
 ]
 
-# Piaceri originali PER LUI (come forniti da te)
 sfide_per_lui = [
     "devi legarmi i polsi, farmi una sega mentre mi metti i piedi al collo e in faccia e li muovi, ma non mi fai venire mai.",
     "devi letteralmente sederti sulla mia faccia e cercare di soffocarmi, io se non respiro piu batto la mano sulla tua gamba",
@@ -53,7 +53,6 @@ sfide_per_lui = [
     "devi letteralmente strusciarmi la vagina in faccia, non 69 ma dal davanti, devi bagnarmi completamente la faccia, e spesso soffocarmi. io non posso toccarmi"
 ]
 
-# Nuove sfide originali PER LUI, ispirate ai suoi piaceri (10)
 sfide_per_lui += [
     "Mi bendi gli occhi e mi fai toccare solo con i piedi, proibendomi di usare le mani per 5 minuti",
     "Devo massaggiare il tuo corpo con olio caldo mentre mi dai ordini precisi su cosa fare",
@@ -67,7 +66,6 @@ sfide_per_lui += [
     "Devo supplicarti di lasciarmi andare mentre mi tieni fermo con mani e piedi legati"
 ]
 
-# Funzioni per pescare sfide senza ripetizioni
 if "sfide_lei_giocate" not in st.session_state:
     st.session_state.sfide_lei_giocate = set()
 if "sfide_lui_giocate" not in st.session_state:
@@ -88,11 +86,11 @@ def pesca_sfida(chi: str):
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("🎲 Sfida per Lei"):
+    if st.button("🔥 Sfida per Lei 🔥"):
         sfida = pesca_sfida("lei")
-        st.markdown(f"### Per Lei: \n{sfida}")
+        st.markdown(f"### Per Lei (Timer: {timer} min):\n{sfida}")
 
 with col2:
-    if st.button("🎲 Sfida per Lui"):
+    if st.button("🔥 Sfida per Lui 🔥"):
         sfida = pesca_sfida("lui")
-        st.markdown(f"### Per Lui: \n{sfida}")
+        st.markdown(f"### Per Lui (Timer: {timer} min):\n{sfida}")
