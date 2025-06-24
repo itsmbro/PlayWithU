@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import time
 
 st.set_page_config(page_title="🔥 Gioco Erotico per Coppie 🔥", layout="centered")
 
@@ -10,9 +11,6 @@ La seduzione, il controllo e il piacere sono la chiave del gioco.
 Divertitevi a scoprire nuove sensazioni insieme!  
 **NB:** Consenso e rispetto sempre al primo posto.
 """)
-
-# Timer selezionabile in minuti
-timer = st.slider("⏳ Scegli il timer della sfida (minuti):", min_value=1, max_value=15, value=5)
 
 sfide_per_lei = [
     "Legami piedi e le mani : leccami SOLO DAVANTI PER 5 minuti",
@@ -71,6 +69,11 @@ if "sfide_lei_giocate" not in st.session_state:
 if "sfide_lui_giocate" not in st.session_state:
     st.session_state.sfide_lui_giocate = set()
 
+if "sfida_corrente" not in st.session_state:
+    st.session_state.sfida_corrente = None
+if "timer_attivo" not in st.session_state:
+    st.session_state.timer_attivo = False
+
 def pesca_sfida(chi: str):
     lista = sfide_per_lei if chi == "lei" else sfide_per_lui
     giocate = st.session_state.sfide_lei_giocate if chi == "lei" else st.session_state.sfide_lui_giocate
@@ -83,14 +86,35 @@ def pesca_sfida(chi: str):
     giocate.add(scelta_idx)
     return lista[scelta_idx]
 
+def countdown(seconds):
+    placeholder = st.empty()
+    for i in range(seconds, -1, -1):
+        minutes = i // 60
+        sec = i % 60
+        placeholder.markdown(f"⏳ Tempo rimanente: **{minutes:02d}:{sec:02d}**")
+        time.sleep(1)
+    placeholder.markdown("⏰ Tempo scaduto!")
+
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("🔥 Sfida per Lei 🔥"):
+    if st.button("🎲 Sfida per Lei"):
         sfida = pesca_sfida("lei")
-        st.markdown(f"### Per Lei (Timer: {timer} min):\n{sfida}")
+        st.session_state.sfida_corrente = sfida
+        st.session_state.timer_attivo = False
 
 with col2:
-    if st.button("🔥 Sfida per Lui 🔥"):
+    if st.button("🎲 Sfida per Lui"):
         sfida = pesca_sfida("lui")
-        st.markdown(f"### Per Lui (Timer: {timer} min):\n{sfida}")
+        st.session_state.sfida_corrente = sfida
+        st.session_state.timer_attivo = False
+
+if st.session_state.sfida_corrente:
+    st.markdown(f"### Sfida: \n{st.session_state.sfida_corrente}")
+
+    # Checkbox per avviare il timer
+    if st.checkbox("⏱️ Avvia timer da 5 minuti"):
+        if not st.session_state.timer_attivo:
+            st.session_state.timer_attivo = True
+            countdown(300)
+            st.session_state.timer_attivo = False
