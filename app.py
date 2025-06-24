@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import time
 
 st.set_page_config(page_title="🔥 Gioco Erotico per Coppie 🔥", layout="centered")
 
@@ -12,6 +11,7 @@ Divertitevi a scoprire nuove sensazioni insieme!
 **NB:** Consenso e rispetto sempre al primo posto.
 """)
 
+# Piaceri originali PER LEI (come forniti da te)
 sfide_per_lei = [
     "Legami piedi e le mani : leccami SOLO DAVANTI PER 5 minuti",
     "⁠legami piedi e mani: leccami solo dietro per 3 minuti e le mani le usi davanti",
@@ -25,6 +25,7 @@ sfide_per_lei = [
     "⁠con un cubetto di ghiaccio in bocca, parti dalla bocca e arrivi ai piedi"
 ]
 
+# Nuove sfide originali PER LEI, ispirate ai suoi piaceri (10)
 sfide_per_lei += [
     "Ti lego le mani sopra la testa e ti massaggio lentamente le cosce fino al bacino per 10 minuti",
     "Con le mani legate, devi ascoltare solo la mia voce mentre ti guido in un gioco sensoriale",
@@ -38,6 +39,7 @@ sfide_per_lei += [
     "Mi fai un massaggio lento e profondo con olio caldo, mentre mi bendi e non posso vedere nulla"
 ]
 
+# Piaceri originali PER LUI (come forniti da te)
 sfide_per_lui = [
     "devi legarmi i polsi, farmi una sega mentre mi metti i piedi al collo e in faccia e li muovi, ma non mi fai venire mai.",
     "devi letteralmente sederti sulla mia faccia e cercare di soffocarmi, io se non respiro piu batto la mano sulla tua gamba",
@@ -51,6 +53,7 @@ sfide_per_lui = [
     "devi letteralmente strusciarmi la vagina in faccia, non 69 ma dal davanti, devi bagnarmi completamente la faccia, e spesso soffocarmi. io non posso toccarmi"
 ]
 
+# Nuove sfide originali PER LUI, ispirate ai suoi piaceri (10)
 sfide_per_lui += [
     "Mi bendi gli occhi e mi fai toccare solo con i piedi, proibendomi di usare le mani per 5 minuti",
     "Devo massaggiare il tuo corpo con olio caldo mentre mi dai ordini precisi su cosa fare",
@@ -64,15 +67,11 @@ sfide_per_lui += [
     "Devo supplicarti di lasciarmi andare mentre mi tieni fermo con mani e piedi legati"
 ]
 
+# Funzioni per pescare sfide senza ripetizioni
 if "sfide_lei_giocate" not in st.session_state:
     st.session_state.sfide_lei_giocate = set()
 if "sfide_lui_giocate" not in st.session_state:
     st.session_state.sfide_lui_giocate = set()
-
-if "sfida_corrente" not in st.session_state:
-    st.session_state.sfida_corrente = None
-if "timer_attivo" not in st.session_state:
-    st.session_state.timer_attivo = False
 
 def pesca_sfida(chi: str):
     lista = sfide_per_lei if chi == "lei" else sfide_per_lui
@@ -86,35 +85,14 @@ def pesca_sfida(chi: str):
     giocate.add(scelta_idx)
     return lista[scelta_idx]
 
-def countdown(seconds):
-    placeholder = st.empty()
-    for i in range(seconds, -1, -1):
-        minutes = i // 60
-        sec = i % 60
-        placeholder.markdown(f"⏳ Tempo rimanente: **{minutes:02d}:{sec:02d}**")
-        time.sleep(1)
-    placeholder.markdown("⏰ Tempo scaduto!")
-
 col1, col2 = st.columns(2)
 
 with col1:
     if st.button("🎲 Sfida per Lei"):
         sfida = pesca_sfida("lei")
-        st.session_state.sfida_corrente = sfida
-        st.session_state.timer_attivo = False
+        st.markdown(f"### Per Lei: \n{sfida}")
 
 with col2:
     if st.button("🎲 Sfida per Lui"):
         sfida = pesca_sfida("lui")
-        st.session_state.sfida_corrente = sfida
-        st.session_state.timer_attivo = False
-
-if st.session_state.sfida_corrente:
-    st.markdown(f"### Sfida: \n{st.session_state.sfida_corrente}")
-
-    # Checkbox per avviare il timer
-    if st.checkbox("⏱️ Avvia timer da 5 minuti"):
-        if not st.session_state.timer_attivo:
-            st.session_state.timer_attivo = True
-            countdown(300)
-            st.session_state.timer_attivo = False
+        st.markdown(f"### Per Lui: \n{sfida}")
