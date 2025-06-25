@@ -26,7 +26,7 @@ sfide_per_lei = [
 ]
 
 # Nuove sfide originali PER LEI, ispirate ai suoi piaceri (10)
-sfide_per_lei += [
+sfide_per_lei_2 = [
     "Ti lego le mani sopra la testa e ti massaggio lentamente le cosce fino al bacino per 10 minuti",
     "Con le mani legate, devi ascoltare solo la mia voce mentre ti guido in un gioco sensoriale",
     "Ti massaggio i piedi con olio caldo mentre sei bendata e non puoi muoverti",
@@ -54,7 +54,7 @@ sfide_per_lui = [
 ]
 
 # Nuove sfide originali PER LUI, ispirate ai suoi piaceri (10)
-sfide_per_lui += [
+sfide_per_lui_2 = [
     "Mi bendi gli occhi e mi fai toccare solo con i piedi, proibendomi di usare le mani per 5 minuti",
     "Devo massaggiare il tuo corpo con olio caldo mentre mi dai ordini precisi su cosa fare",
     "Mi metti a pecora e inizi a mordermi il collo mentre giochi con i miei piedi con le mani",
