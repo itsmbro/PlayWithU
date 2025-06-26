@@ -22,7 +22,11 @@ sfide_per_lei = [
     "⁠devi guardare un massaggio sui porno, prendere su punto e provare a farlo su di me",
     "⁠devo riempiri di olio, massaggiare e poi guardare mentre mi tocco da sola per 5 minuti",
     "⁠devi mettere la panna montata sul culo, se vuoi anche le fragole, e mangiate direttamente da lì",
-    "⁠con un cubetto di ghiaccio in bocca, parti dalla bocca e arrivi ai piedi"
+    "⁠con un cubetto di ghiaccio in bocca, parti dalla bocca e arrivi ai piedi",
+    "Voglio che mi guarda per 5 minuti mentre uno il vibratore",
+    "Voglio che mente uso il vibratore tu usi le mani fino a quando non vengo, puoi ogni tanto smettere per farti una sega",
+    "Voglio che ti fai una sega per  5 minuti mentre mi massaggi i piedi con l’altra mano",
+    "Voglio che mi lecchi i piedi e li piedi mentre ti tocchi, e vai avanti fino a quando non stai per venire"
 ]
 
 # Nuove sfide originali PER LEI, ispirate ai suoi piaceri (10)
